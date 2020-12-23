@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bookstore>
+  <book category="programming">
+    <title lang="en">The Go Programming Language</title>
+    <author>Alan A.A. Donovan</author>
+    <author>Brian W. Kernighan</author>
+    <year>2016</year>
+    <price>30.00</price>
+  </book>
+  <book category="semweb">
+    <title lang="en">Foundations of Semantic Web Technologies</title>
+    <author>Pascal Hitzler</author>
+    <author>Markus Krötzsch</author>
+    <author>Sebastian Rudolph</author>
+    <year>2009</year>>
+    <price>59.99</price>
+  </book>
+  <book category="web">
+    <title lang="en">Learning XML</title>
+    <author>Erik T. Ray</author>
+    <year>2003</year>
+    <price>39.95</price>
+  </book>
+</bookstore>
