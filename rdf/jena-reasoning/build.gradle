@@ -5,6 +5,11 @@ version '1.0-SNAPSHOT'
 apply plugin: "application"
 mainClassName = "semWeb.ReasoningRDFS"
 
+task runReasoningRules(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = "semWeb.ReasoningRules"
+}
+
 repositories {
     mavenCentral()
 }
