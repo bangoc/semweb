@@ -1,0 +1,8 @@
+@prefix ex:    <http://semweb.edu.vn/example#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<ex:colin> a <ex:Teenager> .
+
+<ex:colin>  <ex:mum>  <ex:rosy> ;
+            <ex:age>  "13" .
