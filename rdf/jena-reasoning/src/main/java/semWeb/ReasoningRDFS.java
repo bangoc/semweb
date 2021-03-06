@@ -18,12 +18,6 @@ public class ReasoningRDFS {
         Reasoner rdfs_reasoner = ReasonerRegistry.getRDFSReasoner();
         InfModel infmodel =  ModelFactory.createInfModel(rdfs_reasoner, data);
 
-        Resource colin = infmodel.getResource("ex:colin");
-        System.out.println("Everything about colin:");
-        PrintHelper.printStatements(infmodel, colin, null, null);
-
-        Resource Mum = infmodel.getResource("ex:mum");
-        System.out.println("\nEverything about ex:mum:");
-        PrintHelper.printStatements(infmodel, Mum, null, null);
+        infmodel.write(System.out, "TURTLE");
     }
 }

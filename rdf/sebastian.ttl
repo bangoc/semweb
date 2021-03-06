@@ -1,0 +1,7 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ex:    <http://semweb.edu.vn/example#> .
+
+<ex:sebastian> <ex:eats> <ex:vegetableThaiCurry> ;
+                a <ex:AllergicToNuts> .
+<ex:vegetableThaiCurry> <ex:thaiDishBasedOn> <ex:coconutMilk> .
