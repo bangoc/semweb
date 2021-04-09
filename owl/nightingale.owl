@@ -1,0 +1,534 @@
+@prefix : <http://semweb.edu.vn/bangoc/nightingale_puzzle#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://semweb.edu.vn/bangoc/nightingale_puzzle> .
+
+<http://semweb.edu.vn/bangoc/nightingale_puzzle> rdf:type owl:Ontology ;
+                                                  rdfs:comment """1. Có 5 ngôi nhà liền kề trên một con phố.
+2. Bạn người Anh sống trong ngôi nhà mầu đỏ.
+3. Bạn người Nga nuôi một con gấu.
+4. Bạn sống trong ngôi nhà mầu xanh uống cà phê.
+5. Bạn người Ukraina uống trà.
+6. Ngôi nhà mầu xanh nằm ngay bên phải (nhà được đánh số từ trái qua phải) ngôi nhà mầu ngà.
+7. Bạn hút thuốc Old Gold nuôi một con rùa.
+8. Bạn hút thuốc Marlboro sống trong ngôi nhà mầu vàng.
+9. Bạn sống trong ngôi nhà ở giữa uống sữa.
+10. Bạn người Na Uy sống trong ngôi nhà đầu tiên.
+11. Bạn hút thuốc Apollo-soyuz sống trong ngôi nhà liền kề ngôi nhà có nuôi một con cáo.
+12. Bạn hút thuốc Marlboro sống trong ngôi nhà liền kề ngôi nhà có nuôi một con ngựa..
+13. Bạn hút thuốc Belomorkanal uống vodka.
+14. Bạn người Việt Nam hút thuốc Vinataba.
+15. Bạn người Na Uy sống trong ngôi nhà liền kề ngôi nhà mầu hồng.
+
+Câu hỏi là: Ai nuôi chim họa mi?"""@vi ,
+                                                               """1. There are five houses.
+2. The Englishman lives in the red house.
+3. The Russian owns the bear.
+4. Coffee is drunk in the green house.
+5. The Ukrainian drinks tea.
+6. The green house is immediately to the right of the ivory house.
+7. The Old Gold smoker owns the turtle.
+8. Marlboro are smoked in the yellow house.
+9. Milk is drunk in the middle house.
+10. The Norwegian lives in the first house.
+11. The man who smokes Apollo-soyuz lives in the house next to the man with the fox.
+12. Marlboro are smoked in a house next to the house where the horse is kept.
+13. The Belomorkanal smoker drinks vodka.
+14. The Vietnamese smokes Vinataba.
+15. The Norwegian lives next to the pink house.
+
+The question is: Who owns the nightingale?"""@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#drinks
+:drinks rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ,
+                 owl:InverseFunctionalProperty ;
+        rdfs:domain :Person ;
+        rdfs:range :Beverage .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#hasColor
+:hasColor rdf:type owl:ObjectProperty ,
+                   owl:FunctionalProperty ,
+                   owl:InverseFunctionalProperty ;
+          rdfs:domain :House ;
+          rdfs:range :Color .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#leftTo
+:leftTo rdf:type owl:ObjectProperty ;
+        owl:inverseOf :rightTo ;
+        rdf:type owl:FunctionalProperty ,
+                 owl:InverseFunctionalProperty .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#livesIn
+:livesIn rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ,
+                  owl:InverseFunctionalProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :House .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#owns
+:owns rdf:type owl:ObjectProperty ,
+               owl:FunctionalProperty ,
+               owl:InverseFunctionalProperty ;
+      rdfs:domain :Person ;
+      rdfs:range :Pet .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#rightTo
+:rightTo rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ,
+                  owl:InverseFunctionalProperty ;
+         rdfs:domain :House ;
+         rdfs:range :House .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#smokes
+:smokes rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ,
+                 owl:InverseFunctionalProperty ;
+        rdfs:domain :Person ;
+        rdfs:range :Cigarete .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#Beverage
+:Beverage rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:oneOf ( :coffee
+                                            :milk
+                                            :tea
+                                            :vodka
+                                            :water
+                                          )
+                              ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#Cigarete
+:Cigarete rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:oneOf ( :apollo-soyuz
+                                            :belomorkanal
+                                            :marlboro
+                                            :old-gold
+                                            :vinataba
+                                          )
+                              ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#Color
+:Color rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( :green
+                                         :ivory
+                                         :pink
+                                         :red
+                                         :yellow
+                                       )
+                           ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#House
+:House rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( :house-1
+                                         :house-2
+                                         :house-3
+                                         :house-4
+                                         :house-5
+                                       )
+                           ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#Person
+:Person rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( :english
+                                          :norwegian
+                                          :russian
+                                          :ukrainian
+                                          :vietnamese
+                                        )
+                            ] ;
+        rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :drinks ;
+                                                 owl:someValuesFrom :Beverage
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :livesIn ;
+                                                 owl:someValuesFrom :House
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :owns ;
+                                                 owl:someValuesFrom :Pet
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty :smokes ;
+                                                 owl:someValuesFrom :Cigarete
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#Pet
+:Pet rdf:type owl:Class ;
+     owl:equivalentClass [ rdf:type owl:Class ;
+                           owl:oneOf ( :bear
+                                       :fox
+                                       :horse
+                                       :nightingale
+                                       :turtle
+                                     )
+                         ] .
+
+
+###  http://www.w3.org/2002/07/owl#Nothing
+owl:Nothing rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#apollo-soyuz
+:apollo-soyuz rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#apollo-soyuz-smoker
+:apollo-soyuz-smoker rdf:type owl:NamedIndividual ,
+                              :Person ;
+                     :livesIn :apollo-soyuz-smoker-house ;
+                     :smokes :apollo-soyuz .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#apollo-soyuz-smoker-house
+:apollo-soyuz-smoker-house rdf:type owl:NamedIndividual ,
+                                    :House ,
+                                    [ rdf:type owl:Class ;
+                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :leftTo ;
+                                                      owl:hasValue :fox-owner-house
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :rightTo ;
+                                                      owl:hasValue :fox-owner-house
+                                                    ]
+                                                  )
+                                    ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#bear
+:bear rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#belomorkanal
+:belomorkanal rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#belomorkanal-smoker
+:belomorkanal-smoker rdf:type owl:NamedIndividual ,
+                              :Person ;
+                     :drinks :vodka ;
+                     :smokes :belomorkanal .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#coffee
+:coffee rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#english
+:english rdf:type owl:NamedIndividual ;
+         :livesIn :red-house .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#fox
+:fox rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#fox-owner
+:fox-owner rdf:type owl:NamedIndividual ,
+                    :Person ;
+           :livesIn :fox-owner-house ;
+           :owns :fox .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#fox-owner-house
+:fox-owner-house rdf:type owl:NamedIndividual ,
+                          :House ,
+                          [ rdf:type owl:Class ;
+                            owl:unionOf ( [ rdf:type owl:Restriction ;
+                                            owl:onProperty :leftTo ;
+                                            owl:hasValue :apollo-soyuz-smoker-house
+                                          ]
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :rightTo ;
+                                            owl:hasValue :apollo-soyuz-smoker-house
+                                          ]
+                                        )
+                          ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#green
+:green rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#green-house
+:green-house rdf:type owl:NamedIndividual ,
+                      :House ;
+             :hasColor :green ;
+             :rightTo :ivory-house .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#horse
+:horse rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#horse-owner
+:horse-owner rdf:type owl:NamedIndividual ,
+                      :Person ;
+             :livesIn :horse-owner-house ;
+             :owns :horse .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#horse-owner-house
+:horse-owner-house rdf:type owl:NamedIndividual ,
+                            :House ,
+                            [ rdf:type owl:Class ;
+                              owl:unionOf ( [ rdf:type owl:Restriction ;
+                                              owl:onProperty :leftTo ;
+                                              owl:hasValue :marlboro-smoker-house
+                                            ]
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :rightTo ;
+                                              owl:hasValue :marlboro-smoker-house
+                                            ]
+                                          )
+                            ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#house-1
+:house-1 rdf:type owl:NamedIndividual ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :rightTo ;
+                    owl:allValuesFrom owl:Nothing
+                  ] .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#house-2
+:house-2 rdf:type owl:NamedIndividual ;
+         owl:sameAs :pink-house ;
+         :rightTo :house-1 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#house-3
+:house-3 rdf:type owl:NamedIndividual ;
+         :rightTo :house-2 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#house-4
+:house-4 rdf:type owl:NamedIndividual ;
+         :rightTo :house-3 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#house-5
+:house-5 rdf:type owl:NamedIndividual ;
+         :rightTo :house-4 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#ivory
+:ivory rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#ivory-house
+:ivory-house rdf:type owl:NamedIndividual ,
+                      :House ;
+             :hasColor :ivory .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#man-middle-house
+:man-middle-house rdf:type owl:NamedIndividual ,
+                           :Person ;
+                  :drinks :milk ;
+                  :livesIn :house-3 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#marlboro
+:marlboro rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#marlboro-smoker
+:marlboro-smoker rdf:type owl:NamedIndividual ,
+                          :Person ;
+                 :livesIn :yellow-house ;
+                 :smokes :marlboro .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#marlboro-smoker-house
+:marlboro-smoker-house rdf:type owl:NamedIndividual ,
+                                [ rdf:type owl:Class ;
+                                  owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :leftTo ;
+                                                  owl:hasValue :horse-owner-house
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :rightTo ;
+                                                  owl:hasValue :horse-owner-house
+                                                ]
+                                              )
+                                ] ;
+                       owl:sameAs :yellow-house .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#milk
+:milk rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#nightingale
+:nightingale rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#norwegian
+:norwegian rdf:type owl:NamedIndividual ;
+           :livesIn :house-1 .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#old-gold
+:old-gold rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#old-gold-smoker
+:old-gold-smoker rdf:type owl:NamedIndividual ,
+                          :Person ;
+                 :owns :turtle ;
+                 :smokes :old-gold .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#person-green-house
+:person-green-house rdf:type owl:NamedIndividual ,
+                             :Person ;
+                    :drinks :coffee ;
+                    :livesIn :green-house .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#pink
+:pink rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#pink-house
+:pink-house rdf:type owl:NamedIndividual ,
+                     :House ;
+            :hasColor :pink .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#red
+:red rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#red-house
+:red-house rdf:type owl:NamedIndividual ;
+           :hasColor :red .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#russian
+:russian rdf:type owl:NamedIndividual ,
+                  [ rdf:type owl:Restriction ;
+                    owl:onProperty :owns ;
+                    owl:hasValue :bear
+                  ] ;
+         :owns :bear .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#tea
+:tea rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#turtle
+:turtle rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#ukrainian
+:ukrainian rdf:type owl:NamedIndividual ;
+           :drinks :tea .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#vietnamese
+:vietnamese rdf:type owl:NamedIndividual ;
+            :smokes :vinataba .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#vinataba
+:vinataba rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#vodka
+:vodka rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#water
+:water rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#yellow
+:yellow rdf:type owl:NamedIndividual .
+
+
+###  http://semweb.edu.vn/bangoc/nightingale_puzzle#yellow-house
+:yellow-house rdf:type owl:NamedIndividual ,
+                       :House ;
+              :hasColor :yellow .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :apollo-soyuz
+                        :bear
+                        :belomorkanal
+                        :coffee
+                        :english
+                        :fox
+                        :green
+                        :horse
+                        :house-1
+                        :house-2
+                        :house-3
+                        :house-4
+                        :house-5
+                        :ivory
+                        :marlboro
+                        :milk
+                        :nightingale
+                        :norwegian
+                        :old-gold
+                        :pink
+                        :red
+                        :russian
+                        :tea
+                        :turtle
+                        :ukrainian
+                        :vietnamese
+                        :vinataba
+                        :vodka
+                        :water
+                        :yellow
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
