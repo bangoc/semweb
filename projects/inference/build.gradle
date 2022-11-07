@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClass = 'Main'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-core
+    implementation group: 'org.apache.jena', name: 'jena-core', version: '4.6.1'
+
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-arq
+    implementation group: 'org.apache.jena', name: 'jena-arq', version: '4.6.1'
+
+    // https://mvnrepository.com/artifact/org.apache.jena/apache-jena-libs
+    implementation group: 'org.apache.jena', name: 'apache-jena-libs', version: '4.6.1', ext: 'pom'
+}
