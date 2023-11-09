@@ -1,0 +1,31 @@
+# 1. Tạo Mô tả bằng Turtle cho bài 6.1
+# 2. Bổ xung dữ kiện
+# 3. Thử nghiệm suy diễn:
+# 3.a. Tìm các bộ-3 có thể được suy diễn từ dữ liệu đang có.
+# 3.b. Thiết lập Fuseki ở chế độ suy diễn OWL, nạp dữ liệu, truy vấn các bộ-3
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://semweb.edu.vn/example/pizza#> .
+:Vegetable rdfs:subClassOf :PizzaTopping.
+:PizzaTopping owl:disjointWith :Pizza.
+:aubergine a :Vegetable.
+:hasTopping a owl:ObjectProperty;
+    rdfs:domain :Pizza;
+    rdfs:range :PizzaTopping.
+[owl:intersectionOf (:NoMeatPizza :NoFishPizza)] rdfs:subClassOf :VegPizza.
+:hasTopping rdfs:subPropertyOf :hasIngredient.
+
+:veggie_mania a :NoMeatPizza, :NoFishPizza.
+# |= veggi_mania a :VegPizza
+:meat_lover a :NoFishPizza .
+:seafood_delight a :NoMeatPizza.
+
+:mushroom a :Vegetable.
+#:mushroom a :PizzaTopping.
+#:aubergine a :Pizzatopping
+
+:seafood_delight :hasTopping :tomato.
+#seafood_delight a :Pizza
+#tomato a :PizzaTopping
+# :seafood_delight :hasIngredient :tomato
