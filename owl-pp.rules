@@ -1,0 +1,6 @@
+@prefix : <http://semweb.edu.vn/rule-demo#> .
+@include <OWL>.
+
+[rule1: (?a :fatherOf :mary) (?b :brotherOf ?a) -> (?b :uncleOf :mary)]
+[rule2: (?a :motherOf :mary) (?b :brotherOf ?a) -> (?b :uncleOf :mary)]
+
