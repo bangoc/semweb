@@ -1,0 +1,86 @@
+
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sim:     <http://www.ifi.uio.no/INF3580/simpsons#> .
+@prefix fam:     <http://www.ifi.uio.no/INF3580/family#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+sim:Homer
+      a       foaf:Person ;
+      foaf:age "36"^^xsd:int ;
+      foaf:name "Homer Simpson" .
+
+sim:Marge
+      a       foaf:Person ;
+      foaf:age "34"^^xsd:int ;
+      foaf:name "Marge Simpson" .
+
+sim:Lisa
+      a       foaf:Person ;
+      foaf:age "8"^^xsd:int ;
+      foaf:name "Lisa Simpson" .
+
+sim:Bart
+      a       foaf:Person ;
+      foaf:age "10"^^xsd:int ;
+      foaf:name "Bart Simpson" .
+
+sim:Maggie
+      a       foaf:Person ;
+      foaf:age "1"^^xsd:int ;
+      foaf:name "Maggie Simpson" .
+sim:Simpsons
+      a       fam:Family ;
+      fam:hasFamilyMember sim:Maggie , sim:Homer , sim:Lisa , sim:Bart, sim:Marge .
+sim:Homer
+      fam:hasSpouse sim:Marge .
+
+sim:Marge
+      fam:hasSpouse sim:Homer .
+sim:Bart
+      fam:hasFather sim:Homer ;
+      fam:hasMother sim:Marge .
+
+sim:Lisa
+      fam:hasFather sim:Homer ;
+      fam:hasMother sim:Marge .
+
+sim:Maggie
+      fam:hasFather sim:Homer ;
+      fam:hasMother sim:Marge .
+sim:Abraham a foaf:Person .
+sim:Maggie
+      fam:hasParent
+              [ a       foaf:Person ;
+                fam:hasFather sim:Abraham
+              ] .
+sim:Mona a foaf:Person .
+sim:Maggie
+      fam:hasParent
+              [ a       foaf:Person ;
+                fam:hasMother sim:Mona
+              ] .
+sim:Lisa
+      fam:hasParent
+              [ a       foaf:Person ;
+                fam:hasSister sim:Patty , sim:Selma
+              ] ;
+      fam:hasParent
+              [ a       foaf:Person ;
+                fam:hasBrother sim:Herb
+              ] .
+
+sim:Herb a foaf:Person .
+
+sim:Patty 
+      a  foaf:Person ;
+      fam:hasSister sim:Selma .
+
+sim:Selma 
+      a  foaf:Person ;
+      fam:hasSister sim:Patty .
+
+sim:Marge
+      fam:hasSpouse
+              [ a       foaf:Person ;
+                fam:hasFather sim:Abraham
+              ] .
