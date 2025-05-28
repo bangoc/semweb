@@ -13,8 +13,9 @@ public class Main {
         }
         Model model = RDFDataMgr.loadModel(args[1]);
         Model schema = RDFDataMgr.loadModel(args[0]);
-        Reasoner rdfs_reasoner = ReasonerRegistry.getRDFSReasoner();
-        InfModel inf_model = ModelFactory.createInfModel(rdfs_reasoner, schema, model);
+        // Reasoner reasoner = ReasonerRegistry.getRDFSReasoner();
+        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
+        InfModel inf_model = ModelFactory.createInfModel(reasoner, schema, model);
         inf_model.write(System.out, "TURTLE");
     }
 }
