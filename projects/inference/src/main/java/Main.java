@@ -7,15 +7,14 @@ import org.apache.jena.riot.RDFDataMgr;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length != 2) {
-            System.out.println("Usage: inference tbox.ttl abox.ttl");
+        if (args.length != 3) {
+            System.out.println("Usage: inference RDFS tbox.ttl abox.ttl");
             return;
         }
-        Model model = RDFDataMgr.loadModel(args[1]);
-        Model schema = RDFDataMgr.loadModel(args[0]);
-        // Reasoner reasoner = ReasonerRegistry.getRDFSReasoner();
-        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
-        InfModel inf_model = ModelFactory.createInfModel(reasoner, schema, model);
-        inf_model.write(System.out, "TURTLE");
+        if (args[0].equals("RDFS")) {
+            RDFS.run(args[1], args[2]);
+        } else if (args[0].equals("RULES")) {
+            RULES.run(args[1], args[2]);
+        }
     }
 }
