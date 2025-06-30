@@ -8,11 +8,13 @@ import org.apache.jena.riot.RDFDataMgr;
 public class Main {
     public static void main(String[] args) {
         if (args.length != 3) {
-            System.out.println("Usage: inference RDFS tbox.ttl abox.ttl");
+            System.out.println("Usage: inference [RDFS/OWL/RULES] tbox.ttl abox.ttl");
             return;
         }
         if (args[0].equals("RDFS")) {
             RDFS.run(args[1], args[2]);
+        } else if (args[0].equals("OWL")) {
+            OWL.run(args[1], args[2]);
         } else if (args[0].equals("RULES")) {
             RULES.run(args[1], args[2]);
         }
